@@ -5,7 +5,6 @@
     -   分类：属于行为模式
     -   实例：西游记里面悟空请求菩萨降服红孩儿，菩萨洒了一地水招来一个老乌龟，这个乌龟就是观察者，他观察菩萨洒水这个动作。
         -![This is a picture!](http://www.runoob.com/wp-content/uploads/2014/08/observer_pattern_uml_diagram.jpg#pic-center)
-
 ------
 
 ## 需求：
@@ -54,7 +53,7 @@ public class WeatherData{
 
 观察者模式是什么呢？
 
-观察者模式 = ==订阅者+出版社==
+**观察者模式 = 订阅者+出版社**
 
 当订阅者想知道目前最新的消息时，就成为出版社的订阅者，随时可以接收到出版社出版的报纸。
 当订阅者不再想接收到报纸时，就联系出版社可以直接取消订阅，此后，订阅者就不能够再收到报纸了。
@@ -75,7 +74,7 @@ realsubject才是正真的具体主题，object也才是正真的具体观察者
 
 ![再来一张图](https://upload-images.jianshu.io/upload_images/14812713-e43fddcbabb0dcd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-**==观察者实际上实现了对象之间的松耦合。==**
+**观察者实际上实现了对象之间的松耦合。**
 
 因为主题唯一依赖的是一系列observer的对象列表，只知道观察者实现了observer的update接口，做了哪些事。
 
@@ -83,11 +82,15 @@ realsubject才是正真的具体主题，object也才是正真的具体观察者
 
 这样，当有新的观察者出现时，主题不需要修改现有的代码，因为主题的任务只是将信心发送给观察者，即使二者传递消息但二者并非耦合。
 
-**==设计原则：==**
+
+_设计原则_
 
 **努力做到交互对象之间的松耦合。**
 
+
 这样交互对象之间的依赖降到了最低。
+
+
 
 代码
 
@@ -199,8 +202,8 @@ public class WeatherStation implements CollectData {
     @Override
     public void notifyAllObserver() {
         for(Observer observer:list){
-            
- /*主题无需知道到底是那个公告板，它只负责通知到观察者即可*/           observer.update(temperature,humidity,pressure);
+            /*主题无需知道到底是那个公告板，它只负责通知到观察者即可*/
+            observer.update(temperature,humidity,pressure);
         }
     }
 
@@ -241,24 +244,35 @@ public class ObserverPattern {
 
 运行结果：
 
->   message updated!89.0,99.0,100.0
->   board2 read some different:
->   max is :100.0
->   min is :89.0
->   board3 see something strange:
->   99.0
->
->   message updated!10.0,6.0,0.0
->   board2 read some different:
->   max is :10.0
->   min is :0.0
->   board3 see something strange:
->   6.0
->
->   message updated!35.0,36.0,37.0
->   board2 read some different:
->   max is :37.0
->   min is :35.0
->   board3 see something strange:
->   36.0
+>message updated!89.0,99.0,100.0
+
+>board2 read some different:
+
+>max is :100.0
+
+>min is :89.0
+
+>board3 see something strange:99.0
+---
+
+>message updated!10.0,6.0,0.0
+
+>board2 read some different:
+
+>max is :10.0
+
+>min is :0.0
+
+>board3 see something strange:6.0
+---
+
+>message updated!35.0,36.0,37.0
+
+>board2 read some different:
+
+>max is :37.0
+
+>min is :35.0
+
+>board3 see something strange:36.0
 
