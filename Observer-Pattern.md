@@ -244,25 +244,27 @@ public class ObserverPattern {
 运行结果：
 
 >message updated!89.0,99.0,100.0
-
+>
 >board2 read some different:
-
+>
 >max is :100.0
-
+>
 >min is :89.0
-
+>
 >board3 see something strange:99.0
+
 ---
 
 >message updated!10.0,6.0,0.0
-
+>
 >board2 read some different:
-
+>
 >max is :10.0
-
+>
 >min is :0.0
-
+>
 >board3 see something strange:6.0
+
 ---
 
 >message updated!35.0,36.0,37.0
