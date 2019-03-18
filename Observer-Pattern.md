@@ -266,11 +266,11 @@ public class ObserverPattern {
 ---
 
 >message updated!35.0,36.0,37.0
-
+>
 >board2 read some different:
-
+>
 >max is :37.0
-
+>
 >min is :35.0
 >
 >board3 see something strange:36.0
