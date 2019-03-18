@@ -7,7 +7,6 @@
 
 
 ![This is a picture!](http://www.runoob.com/wp-content/uploads/2014/08/observer_pattern_uml_diagram.jpg)
->>>>>>> branch-of-Decorator-Pattern
 ------
 
 ## 需求：
@@ -334,11 +333,11 @@ public class ObserverPattern {
 
 ​	修改update方法:
 
-​	update（Observable o,Observer arg）
+​	    update（Observable o,Observer arg）
 
-​	第一个变量：主题Observable让观察者知道是哪个主题通知给他的，
+​	    第一个变量：主题Observable让观察者知道是哪个主题通知给他的，
 
-​	第二个变量：Observer是传入notifyObservers的对象，没有则为空。
+​	    第二个变量：Observer是传入notifyObservers的对象，没有则为空。
 
 代码：
 
@@ -468,7 +467,6 @@ public class board3 implements Display,Observer{
     }
 }
 ```
-
 
 
 Display:
