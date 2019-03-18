@@ -504,25 +504,23 @@ public class ObserverPattern {
 
 <font color=#ff0000>结果：</font>
 
->board3 see something strange: 99.0
->board2 says some different:
->max is :100.0
->min:89.0
->ObserverPattern.board1:
->89.0,99.0,100.0
->board3 see something strange: 6.0
->board2 says some different:
->max is :10.0
->min:0.0
->ObserverPattern.board1:
->10.0,6.0,0.0
->board2 says some different:
->max is :37.0
->min:35.0
->ObserverPattern.board1:
+>board3 see something strange: 99.0  
+>board2 says some different:  
+>max is :100.0  
+>min:89.0  
+>ObserverPattern.board1:  
+>89.0,99.0,100.0  
+>board3 see something strange: 6.0  
+>board2 says some different:  
+>max is :10.0  
+>min:0.0  
+>ObserverPattern.board1:  
+>10.0,6.0,0.0  
+>board2 says some different:  
+>max is :37.0  
+>min:35.0  
+>ObserverPattern.board1:  
 >35.0,36.0,37.0
->
->Process finished with exit code 0
 
 
 
