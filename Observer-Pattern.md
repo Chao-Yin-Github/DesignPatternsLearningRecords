@@ -4,7 +4,7 @@
     -   定义：这个模式定义了一对多依赖，这样，**当一个对象被修改时，被观察者==自动==通知它依赖的观察者。**
     -   分类：属于行为模式
     -   实例：西游记里面悟空请求菩萨降服红孩儿，菩萨洒了一地水招来一个老乌龟，这个乌龟就是观察者，他观察菩萨洒水这个动作。
-        -![This is a picture!](http://www.runoob.com/wp-content/uploads/2014/08/observer_pattern_uml_diagram.jpg#pic-center)
+![This is a picture!](http://www.runoob.com/wp-content/uploads/2014/08/observer_pattern_uml_diagram.jpg#pic-center)
 ------
 
 ## 需求：
