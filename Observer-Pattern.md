@@ -62,7 +62,7 @@ public class WeatherData{
 
 换个名字，即出版社是主题【subject】，订阅者是观察者【Observer】。
 
-![看张图：](https://upload-images.jianshu.io/upload_images/14812713-32dd695c9c727010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240#pic_center)
+![](https://upload-images.jianshu.io/upload_images/14812713-32dd695c9c727010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240#pic_center"看张图：")
 
 实现观察者模式不只有一种方式：可以用继承类或者实现接口。
 
