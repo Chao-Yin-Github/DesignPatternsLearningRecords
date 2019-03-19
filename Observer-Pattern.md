@@ -62,7 +62,7 @@ public class WeatherData{
 
 换个名字，即出版社是主题【subject】，订阅者是观察者【Observer】。
 
-![](https://upload-images.jianshu.io/upload_images/14812713-32dd695c9c727010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240#pic_center"看张图：")
+![看张图](https://upload-images.jianshu.io/upload_images/14812713-32dd695c9c727010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240#pic_center"看张图：")
 
 实现观察者模式不只有一种方式：可以用继承类或者实现接口。
 
@@ -305,7 +305,7 @@ public class ObserverPattern {
 
 在java.util包里，包含最基本的Observer接口和Observable类，你可以用 `推` 或 `拉` 的方式传送数据。
 
-[![](https://upload-images.jianshu.io/upload_images/14812713-a70d9bdadf3a8eb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/807/format/webp"来自沸点Java组分享")](https://www.jianshu.com/p/7286e8d3d8e5)
+[![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/14812713-a70d9bdadf3a8eb8.jpg?raw=true"来自沸点Java组分享")](https://www.jianshu.com/p/7286e8d3d8e5)
 
 用此方法实现时，Observerable调用的addObserver方法来将Observer注册到主题Observerable。
 
