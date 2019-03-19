@@ -1,5 +1,4 @@
 # 观察者模式
-
 -   观察者模式概述
     -   定义：这个模式定义了一对多依赖，这样，**当一个对象被修改时，被观察者==自动==通知它依赖的观察者。**
     -   分类：属于行为模式
@@ -88,9 +87,8 @@ ConcreteSubject才是正真的具体主题，ConcreteObserver也才是正真的�
 
 ****
 
-<font color=#ff0000 size=5>**`设计原则`**</font>
-
-**努力做到交互对象之间的松耦合。**
+<font color=red>**`设计原则`**</font>  
+**`努力做到交互对象之间的松耦合。`**
 
 
 这样交互对象之间的依赖降到了最低。
@@ -305,7 +303,7 @@ public class ObserverPattern {
 
 在java.util包里，包含最基本的Observer接口和Observable类，你可以用 `推` 或 `拉` 的方式传送数据。
 
-[![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/14812713-a70d9bdadf3a8eb8.jpg?raw=true"来自沸点Java组分享")](https://www.jianshu.com/p/7286e8d3d8e5)
+[![来自沸点Java组分享](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/14812713-a70d9bdadf3a8eb8.jpg?raw=true"来自沸点Java组分享")](https://www.jianshu.com/p/7286e8d3d8e5)
 
 用此方法实现时，Observerable调用的addObserver方法来将Observer注册到主题Observerable。
 
