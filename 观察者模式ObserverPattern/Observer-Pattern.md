@@ -302,7 +302,7 @@ public class ObserverPattern {
 
 在java.util包里，包含最基本的Observer接口和Observable类，你可以用 `推` 或 `拉` 的方式传送数据。
 
-[![来自沸点Java组分享](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/14812713-a70d9bdadf3a8eb8.jpg?raw=true"来自沸点Java组分享")](https://www.jianshu.com/p/7286e8d3d8e5)
+[![来自沸点Java组分享](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8FObserverPattern/Observer1.jpg?raw=true"来自沸点Java组分享")](https://www.jianshu.com/p/7286e8d3d8e5)
 
 用此方法实现时，Observerable调用的addObserver方法来将Observer注册到主题Observerable。
 
