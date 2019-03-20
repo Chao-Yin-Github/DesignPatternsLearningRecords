@@ -4,7 +4,7 @@
 
 现在要模拟星巴克咖啡的种类,并且算出不同种咖啡的价格。
 
-![饮料父类](F:\GithubLocal\DesignPatternsLearningRecords\Decorator1.jpg"饮料父类")
+![饮料父类](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator1.jpg?raw=true"饮料父类")
 
 ****
 
@@ -18,7 +18,7 @@
 
 
 
-![](C:\Users\YYSir\AppData\Roaming\Typora\typora-user-images\1552998813778.png)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator2.jpg?raw=true)
 
 
 
@@ -28,7 +28,7 @@
 
 利用布尔变量表示是否拥有相应的调料。
 
-![](C:\Users\YYSir\AppData\Roaming\Typora\typora-user-images\1552999866995.png)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator3.jpg?raw=true.png)
 
 但是，这样也有一些问题。
 
@@ -79,9 +79,9 @@
 3.  以奶泡（Whip）对象装饰它
 4.  调用cost（）方法，并依赖委托（delegate）将调料的价钱加上去。
 
-![](C:\Users\YYSir\AppData\Roaming\Typora\typora-user-images\1553001425539.png)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator4.jpg?raw=true)
 
-![](F:\GithubLocal\DesignPatternsLearningRecords\Decorator5.jpg)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator5.jpg?raw=true)
 
 
 
@@ -101,11 +101,11 @@
 
 
 
-![](F:\GithubLocal\DesignPatternsLearningRecords\Decorator6.jpg)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator6.jpg?raw=true)
 
 
 
-![](F:\GithubLocal\DesignPatternsLearningRecords\Decorator7.jpg)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator7.jpg?raw=true)
 
 代码：
 
@@ -244,7 +244,7 @@ public class DecoratorPattern {
 
 
 
-![](F:\GithubLocal\DesignPatternsLearningRecords\Decorator8.jpg)
+![](https://github.com/YYkwSir/DesignPatternsLearningRecords/blob/master/DecoratorPattern/Decorator8.jpg?raw=true)
 
 
 
