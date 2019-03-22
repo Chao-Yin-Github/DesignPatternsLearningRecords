@@ -39,14 +39,14 @@ public class WeatherData{
 
 这样似乎可行，但是这样有几个缺点：
 
-1.  这样是针对具体实现编程，而非ie针对接口编程。
+1.  这样是针对具体实现编程，而非针对接口编程。
 2.  对于每个新的公告板，我们都得修改代码。
 3.  公告板没有一个公共的接口。
 4.  没有封装完整。
 
 ------
 
-## 方法二：
+## 方法二：观察者模式
 
 既然本文将观察者模式，那就有观察者模式的办法：
 
@@ -61,7 +61,7 @@ public class WeatherData{
 
 换个名字，即出版社是主题【subject】，订阅者是观察者【Observer】。
 
-![看张图](https://upload-images.jianshu.io/upload_images/14812713-32dd695c9c727010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240#pic_center"看张图：")
+![看张图](https://upload-images.jianshu.io/upload_images/14812713-32dd695c9c727010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"看张图：")
 
 实现观察者模式不只有一种方式：可以用继承类或者实现接口。
 
@@ -93,44 +93,65 @@ ConcreteSubject才是正真的具体主题，ConcreteObserver也才是正真的�
 ```
 这样使交互对象之间的依赖降到了最低。
 
-
 代码
+
+
 
 抽象主题Subject:
 
 ```java
-public interface CollectData {
+public interface DataCollector {
     public void registerObserver(Observer o);
     public void removeObserver(Observer o);
-    public void notifyAllObserver();
+    public void notifyAllObservers();
 }
 ```
+
+
 
 抽象观察者Observer：
 
 ```java
 public interface Observer {
-    public void update(double a,double b, double c);
+    public void update(double temperature,double humidity, double pressure);
 }
 ```
+
+
+
+抽象显示类Displayer:
+
+```java
+public interface Displayer {
+    public void display();
+}
+```
+
+
 
 具体观察者者公告板1：
 
 ```java
-public class board1 implements Observer{
-    private double temperature,humidity,pressure;
-    
+public class board1 implements Observer,Displayer{
+    double temperature,humidity,pressure;
+    private DataCollector weatherData;
+
+    public board1(DataCollector dataCollector){
+        weatherData = dataCollector;
+        weatherData.registerObserver(this);
+    }
+
     @Override
-    public void update(double temperature,double humidity,double pressure){
+    public void update(double temperature, double humidity, double pressure) {
+        this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
-        this.temperature = temperature;
-        read();
+        display();
     }
-    
-    //公告板1的任务是将更新的数据输出。
-    public void read(){
-        System.out.println("message updated!"+temperature+","+humidity+","+pressure);
+
+    //公告板1的任务是输出更新的数据。
+    public void display() {
+        System.out.println("board1:\ntemperature:"+temperature+"\nhumidity:"+humidity+"\npressure:"+pressure);
     }
 }
 ```
@@ -138,73 +159,85 @@ public class board1 implements Observer{
 具体观察者公告板2：
 
 ```java
-public class board2 implements Observer {
-    private double temperature,humidity,pressure;
-    
+public class board2 implements Observer,Displayer{
+    double temperature,humidity,pressure;
+    private DataCollector weatherCollector;
+
+    public board2(DataCollector dataCollector){
+        weatherCollector = dataCollector;
+        weatherCollector.registerObserver(this);
+    }
+
     @Override
-    public void update(double temperature,double humidity,double pressure){
+    public void update(double temperature, double humidity, double pressure) {
+        this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
-        this.temperature = temperature;
-        read();
+        display();
     }
-    
-    //公告板2的任务是找到三个值里的最大值和最小值。
-    public void read(){
-        double max=temperature>pressure?(temperature>humidity?temperature:humidity):pressure>humidity?pressure:humidity;
-        double min=temperature<pressure?(temperature<humidity?temperature:humidity):pressure<humidity?pressure:humidity;
-        System.out.println("board2 read some different:\nmax is :"+max+"\nmin is :"+min);
+
+    //公告板2的任务是输出更新数据的最值
+    @Override
+    public void display() {
+        double max=temperature>humidity?(temperature>pressure?temperature:pressure):humidity>pressure?humidity:pressure;
+        double min=temperature<humidity?(temperature<pressure?temperature:pressure):humidity<pressure?humidity:pressure;
+        System.out.println("----------------\nboard2:\nmax:"+max+"\nmin:"+min);
     }
 }
+
 ```
 
 具体观察者公告板3：
 
 ```java
-public class board3 implements Observer{
+public class board3 implements Displayer,Observer{
     double temperature,humidity,pressure;
+    private DataCollector weatherCollector;
+
+    public board3(DataCollector dataCollector){
+        weatherCollector = dataCollector;
+        weatherCollector.registerObserver(this);
+    }
+
+    //公告板3的任务是输出平均值。
+    @Override
+    public void display() {
+        System.out.println("----------------\nboard3:"+(temperature+humidity+pressure)/3+"\n----------------");
+    }
 
     @Override
-    public void update(double temperature,double humidity,double pressure){
+    public void update(double temperature, double humidity, double pressure) {
         this.humidity = humidity;
         this.pressure = pressure;
         this.temperature = temperature;
-        read();
-    }
-    
-    //公告板3的任务是输出湿度。
-    public void read(){
-        System.out.println("board3 see something strange:\n"+humidity);
+        display();
     }
 }
+
 ```
 
 具体的主题观测站：
 
 ```java
-import java.util.*;
+import java.util.ArrayList;
 
-public class WeatherStation implements CollectData {
-    private double temperature;
-    private double humidity;
-    private double pressure;
-
-    ArrayList<Observer>list = new ArrayList<>();
-
+public class WeatherStation implements DataCollector{
+    ArrayList<Observer> observers = new ArrayList<>();
+    double temperature,humidity,pressure;
+    
     @Override
-    public void registerObserver(Observer observer) {
-        list.add(observer);
+    public void registerObserver(Observer o) {
+        observers.add(o);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
-        list.remove(observer);
+    public void removeObserver(Observer o) {
+        observers.remove(o);
     }
 
     @Override
-    public void notifyAllObserver() {
-        for(Observer observer:list){
-            /*主题无需知道到底是那个公告板，它只负责通知到观察者即可*/
+    public void notifyAllObservers() {
+        for(Observer observer :observers){
             observer.update(temperature,humidity,pressure);
         }
     }
@@ -213,32 +246,24 @@ public class WeatherStation implements CollectData {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
-        //每当数据改变时，就将新的数据通知给每一个Observer
-        notifyAllObserver();
+        notifyAllObservers();
     }
 }
 ```
 
-主函数负责更新数据：
+主函数更新数据：
 
 ```java
-public class ObserverPattern {
-    public static void main(String [] args){
+public class Main {
+
+    public static void main(String[] args) {
         WeatherStation weatherStation = new WeatherStation();
-        board1 observer1 = new board1();
-        board2 observer2 = new board2();
-        board3 observer3 = new board3();
+        board1 observer1 = new board1(weatherStation);
+        board2 observer2 = new board2(weatherStation);
+        board3 observer3 = new board3(weatherStation);
 
-        //分别注册各个观察者
-        weatherStation.registerObserver(observer1);
-        weatherStation.registerObserver(observer2);
-        weatherStation.registerObserver(observer3);
-
-        //一次更新
-        weatherStation.setInformation(89,99,100);
-        //而次更新
-        weatherStation.setInformation(10,6,0);
-        //三次更新
+        weatherStation.setInformation(16,11,65);
+        weatherStation.setInformation(20,30,40);
         weatherStation.setInformation(35,36,37);
     }
 }
@@ -246,39 +271,46 @@ public class ObserverPattern {
 
 运行结果：
 
->message updated!89.0,99.0,100.0
+>board1:
+>temperature:16.0
+>humidity:11.0
+>pressure:65.0
+
+>   board2:
+>   max:65.0
+>   min:11.0
+
+>   board3:
 >
->board2 read some different:
->
->max is :100.0
->
->min is :89.0
->
->board3 see something strange:99.0
+>   30.666666666666668
 
 ---
 
->message updated!10.0,6.0,0.0
->
->board2 read some different:
->
->max is :10.0
->
->min is :0.0
->
->board3 see something strange:6.0
+>   board1:
+>   temperature:20.0
+>   humidity:30.0
+>   pressure:40.0
 
----
+>   board2:
+>   max:40.0
+>   min:20.0
 
->message updated!35.0,36.0,37.0
+>   board3:
 >
->board2 read some different:
+>   30.0
+
+>   board1:
+>   temperature:35.0
+>   humidity:36.0
+>   pressure:37.0
+
+>   board2:
+>   max:37.0
+>   min:35.0
+
+>   board3:
 >
->max is :37.0
->
->min is :35.0
->
->board3 see something strange:36.0 
+>   36.0
 
 ---
 
