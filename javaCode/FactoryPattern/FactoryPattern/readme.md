@@ -8,7 +8,7 @@
     所以FactoryMethod中,高层组件不应依赖具体类(具体Pizza类)
 
     - 实例:
-        ![](https://raw.githubusercontent.com/YccSir/DesignPatternsLearningRecords/master/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8FFactoryPattern/FactoryPattern0.jpg)
+        ![](E:\JavaProjects\DesignPatterns\src\main\java\FactoryPattern\FactoryPattern\FactoryPattern0.jpg)
 
         在此原则中,高层组件(PizzaStore)和底层组件(具体Pizza类)都依赖于抽象类Pizza.
 
